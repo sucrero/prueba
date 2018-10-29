@@ -21,9 +21,9 @@
         }
 
         public function setPropiedades($nombreusu, $apeusu, $loginusu, $claveusu){
-            $this->_nombreusu = mb_strtolower($nombreusu);
-            $this->_apeusu = mb_strtolower($apeusu);
-            $this->_loginusu = mb_strtolower($loginusu);
+            $this->_nombreusu = strtolower($nombreusu);
+            $this->_apeusu = strtolower($apeusu);
+            $this->_loginusu = strtolower($loginusu);
             $this->_claveusu = $claveusu;
         }
 
@@ -102,7 +102,7 @@
 
         public function editar($datos,$con){ 
             
-            $sql = "UPDATE usuario SET nombreusu='".mb_strtolower($_REQUEST['txtnombre'])."', apeusu='".mb_strtolower($_REQUEST['txtape'])."', status='".$_REQUEST['statususu']."' WHERE idusuario = '".$_REQUEST['idusumod']."'";
+            $sql = "UPDATE usuario SET nombreusu='".strtolower($_REQUEST['txtnombre'])."', apeusu='".strtolower($_REQUEST['txtape'])."', status='".$_REQUEST['statususu']."' WHERE idusuario = '".$_REQUEST['idusumod']."'";
             if($con->query($sql)){
                 return 1;
             }else{
