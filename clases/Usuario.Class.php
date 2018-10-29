@@ -21,20 +21,20 @@
         }
 
         public function setPropiedades($nombreusu, $apeusu, $loginusu, $claveusu){
-            $this->_nombreusu = strtolower($nombreusu);
-            $this->_apeusu = strtolower($apeusu);
-            $this->_loginusu = strtolower($loginusu);
+            $this->_nombreusu = mb_strtolower($nombreusu);
+            $this->_apeusu = mb_strtolower($apeusu);
+            $this->_loginusu = mb_strtolower($loginusu);
             $this->_claveusu = $claveusu;
         }
 
         public function valLogin($login,$con,$clave){
-            $sql = "SELECT * FROM usuario WHERE loginusu='".strtolower($login)."'";
+            $sql = "SELECT * FROM usuario WHERE loginusu='".mb_strtolower($login)."'";
             if($resp = $con->query($sql)){
                 if($resp->num_rows > 0){
                     $row = $resp->fetch_array(MYSQLI_ASSOC);
                     if($row['status'] == 1){
                         if($this->descla($clave,$row['claveusu'])){
-                            $_SESSION['cuenta'] = ucwords(strtolower($row['nombreusu']." ".$row['apeusu']));
+                            $_SESSION['cuenta'] = ucwords(mb_strtolower($row['nombreusu']." ".$row['apeusu']));
                             $_SESSION['login'] = $row['loginusu'];
                             $_SESSION['idusu'] = $row['idusuario'];
                             return 4;
@@ -70,7 +70,7 @@
         }
 
         public function buscarUsu($login,$con,$tip = 1){
-            $sql = "SELECT * FROM usuario WHERE loginusu='".strtolower($login)."'";
+            $sql = "SELECT * FROM usuario WHERE loginusu='".mb_strtolower($login)."'";
             if($resp = $con->query($sql)){
                 if($resp->num_rows > 0){
                     if($tip == 1){
@@ -102,7 +102,7 @@
 
         public function editar($datos,$con){ 
             
-            $sql = "UPDATE usuario SET nombreusu='".strtolower($_REQUEST['txtnombre'])."', apeusu='".strtolower($_REQUEST['txtape'])."', status='".$_REQUEST['statususu']."' WHERE idusuario = '".$_REQUEST['idusumod']."'";
+            $sql = "UPDATE usuario SET nombreusu='".mb_strtolower($_REQUEST['txtnombre'])."', apeusu='".mb_strtolower($_REQUEST['txtape'])."', status='".$_REQUEST['statususu']."' WHERE idusuario = '".$_REQUEST['idusumod']."'";
             if($con->query($sql)){
                 return 1;
             }else{
@@ -194,7 +194,7 @@
                                 <title>Restablece tu contraseña</title>
                              </head>
                              <body>
-                               <p>Hola, <b>'.ucfirst(strtolower($nombre)).', hemos recibido una petición para restablecer la contraseña de tu cuenta!.</p>
+                               <p>Hola, <b>'.ucfirst(mb_strtolower($nombre)).', hemos recibido una petición para restablecer la contraseña de tu cuenta!.</p>
                                <p>Si hiciste esta petición, haz clic en el siguiente enlace, si no hiciste esta petición puedes ignorar este correo.</p>
                                <p>
                                  <strong>Enlace para restablecer tu contraseña</strong><br>
@@ -266,40 +266,6 @@
         }
 
 ////////////////////////////////////
-        public function ingresarUsu($con){
-            $sql = "INSERT INTO usuario (nombreusu, apeusu, loginusu, claveusu, status, nivel, fechaalta, emailusu) VALUES 
-                ('$this->_nombreusu','$this->_apeusu','$this->_loginusu','$this->_claveusu',1,'$this->_nivel','$this->_fechaalta','$this->_emailusu')";
-//            print_r($sql);            exit();
-            if($resp = $con->query($sql)){
-                return $con->insert_id;
-            }else{
-                return 0;
-            }
-        }
-
-        public function buscar($sql, $con){
-            /*print_r($sql); die();*/
-            if($resp = $con->query($sql)){
-                return $resp->num_rows;
-            }
-        }
-
-        public function buscarRow($sql, $con){
-            /*print_r($sql); die();*/
-            return $con->query($sql);
-        }
-
-       
-
-        // public function editar($sql,$con){
-        //     return $con->query($sql);
-        // }
-
-        
-
-        
-
-       
 
         
     }

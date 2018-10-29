@@ -11,7 +11,7 @@ jQuery(document).ready(function() {
         e.preventDefault();
         $.ajax({
             type:'POST',
-            url:'Modelo.php',
+            url:'https://prueba-conforce.herokuapp.com/Modelo.php',
             data:$('#formlogin').serialize()+'&op=valsesion',
             success:function(resp){
                 if(resp == 0){
@@ -72,7 +72,7 @@ jQuery(document).ready(function() {
         if(confirm("¿Seguro desea editar el registro?")){
             $.ajax({
                 type:'POST',
-                url:'Modelo.php',
+                url:'https://prueba-conforce.herokuapp.com/Modelo.php',
                 data:$('#formUsu').serialize()+'&op=editusu',
                 success:function(resp){
                     if(resp == 1){
@@ -95,7 +95,7 @@ jQuery(document).ready(function() {
         
         $.ajax({
             type:'POST',
-            url:'Modelo.php',
+            url:'https://prueba-conforce.herokuapp.com/Modelo.php',
             data:$('#formresetpass').serialize()+'&op=resetpass',
             success:function(resp){
                 if(resp == 0){ 
@@ -121,7 +121,7 @@ jQuery(document).ready(function() {
         if($('#cla1').val() == $('#cla2').val()){
             $.ajax({
                 type:'POST',
-                url:'Modelo.php',
+                url:'https://prueba-conforce.herokuapp.com/Modelo.php',
                 data:$('#cambiarpass').serialize()+'&op=cambiarpass',
                 success:function(resp){
                     if(resp == 0){
@@ -170,7 +170,7 @@ jQuery(document).ready(function() {
 
         $.ajax({
             type:'POST',
-            url:'Modelo.php',
+            url:'https://prueba-conforce.herokuapp.com/Modelo.php',
             data:$('#formproces').serialize()+'&op=guardarproceso',
             success:function(resp){
                 if(resp == 1){
@@ -243,7 +243,7 @@ jQuery(document).ready(function() {
         if(confirm("¿Seguro desea editar el registro?")){
             $.ajax({
                 type:'POST',
-                url:'Modelo.php',
+                url:'https://prueba-conforce.herokuapp.com/Modelo.php',
                 data:$('#editformproces').serialize()+'&op=editproceso',
                 success:function(resp){
                     if(resp == 1){
@@ -273,7 +273,7 @@ jQuery(document).ready(function() {
 function verProceso (datos){
     $.ajax({
         type:'POST',
-        url:'Modelo.php',
+        url:'https://prueba-conforce.herokuapp.com/Modelo.php',
         data:'datos='+JSON.stringify(datos)+'&op=viewproc',
         success:function(resp){
             ir('mostrar.php');
@@ -305,7 +305,7 @@ function eliminarusu(idusu){
         if (confirm("¿Seguro desea desactivar este registro?")) {
             $.ajax({
                 type:'POST',
-                url:'Modelo.php',
+                url:'https://prueba-conforce.herokuapp.com/Modelo.php',
                 data:'idusu='+idusu+'&op=deleteusu',
                 success:function(resp){
                     if(resp == 1){
