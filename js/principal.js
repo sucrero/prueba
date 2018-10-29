@@ -247,7 +247,6 @@ jQuery(document).ready(function() {
                 url:'https://prueba-conforce.herokuapp.com/Modelo.php',
                 data:$('#editformproces').serialize()+'&op=editproceso',
                 success:function(resp){
-                    alert(resp);
                     if(resp == 1){
                         alert("Proceso editado");
                         ir("crearproceso.php");
