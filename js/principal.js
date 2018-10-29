@@ -32,7 +32,7 @@ jQuery(document).ready(function() {
         event.preventDefault();
         $.ajax({
             type:'POST',
-            url:'Modelo.php',
+            url:'https://prueba-conforce.herokuapp.com/Modelo.php',
             data:$('#formUsu').serialize()+'&op=registrousu',
             success:function(resp){
                 if(resp == 1){ 
