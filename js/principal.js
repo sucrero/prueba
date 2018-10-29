@@ -47,6 +47,9 @@ jQuery(document).ready(function() {
                 }else{ 
                     alert("Hubo un error en la búsqueda");
                 }
+            },
+            error: function( jqXhr, textStatus, errorThrown ){
+                console.log( errorThrown );
             }
         });         
     });
