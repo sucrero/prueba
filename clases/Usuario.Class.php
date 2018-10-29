@@ -34,7 +34,7 @@
                     $row = $resp->fetch_array(MYSQLI_ASSOC);
                     if($row['status'] == 1){
                         if($this->descla($clave,$row['claveusu'])){
-                            $_SESSION['cuenta'] = ucwords(mb_strtolower($row['nombreusu']." ".$row['apeusu']));
+                            $_SESSION['cuenta'] = ucwords(strtolower($row['nombreusu']." ".$row['apeusu']));
                             $_SESSION['login'] = $row['loginusu'];
                             $_SESSION['idusu'] = $row['idusuario'];
                             return 4;
@@ -70,7 +70,7 @@
         }
 
         public function buscarUsu($login,$con,$tip = 1){
-            $sql = "SELECT * FROM usuario WHERE loginusu='".mb_strtolower($login)."'";
+            $sql = "SELECT * FROM usuario WHERE loginusu='".strtolower($login)."'";
             if($resp = $con->query($sql)){
                 if($resp->num_rows > 0){
                     if($tip == 1){
@@ -194,7 +194,7 @@
                                 <title>Restablece tu contraseña</title>
                              </head>
                              <body>
-                               <p>Hola, <b>'.ucfirst(mb_strtolower($nombre)).', hemos recibido una petición para restablecer la contraseña de tu cuenta!.</p>
+                               <p>Hola, <b>'.ucfirst(strtolower($nombre)).', hemos recibido una petición para restablecer la contraseña de tu cuenta!.</p>
                                <p>Si hiciste esta petición, haz clic en el siguiente enlace, si no hiciste esta petición puedes ignorar este correo.</p>
                                <p>
                                  <strong>Enlace para restablecer tu contraseña</strong><br>
@@ -264,8 +264,5 @@
                 return 6;
             }
         }
-
-////////////////////////////////////
-
-        
+ 
     }

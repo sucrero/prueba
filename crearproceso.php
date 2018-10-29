@@ -186,7 +186,7 @@
 		        }
 		        $.ajax({
 	                type:'POST',
-	                url:'Modelo.php',
+	                url:'https://prueba-conforce.herokuapp.com/Modelo.php',
 	                data:'datos='+JSON.stringify(datos)+'&op=viewproc',
 	                success:function(resp){
 	                    ir('mostrar.php');

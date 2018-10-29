@@ -145,7 +145,7 @@
           $('#dataTables-usuario').DataTable({           
               ajax: {
                   /*url: 'avisos-ajax.php',*/
-                  url: 'Modelo.php',
+                  url: 'https://prueba-conforce.herokuapp.com/Modelo.php',
                   data: {
                      op: 'usuariosreg'
                   },
