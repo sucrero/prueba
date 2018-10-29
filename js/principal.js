@@ -20,6 +20,7 @@ jQuery(document).ready(function() {
                     alert("Usuario o contraseña errados");
                 }else if(resp == 2){
                     alert("Usuario desactivado");
+                    $('#dataTables-usuario').DataTable().ajax.reload();
                 }else{
                     ir("landing.php");
                 }
@@ -246,6 +247,7 @@ jQuery(document).ready(function() {
                 url:'https://prueba-conforce.herokuapp.com/Modelo.php',
                 data:$('#editformproces').serialize()+'&op=editproceso',
                 success:function(resp){
+                    alert(resp);
                     if(resp == 1){
                         alert("Proceso editado");
                         ir("crearproceso.php");

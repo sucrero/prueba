@@ -52,6 +52,7 @@
         	if($resp == 2){
 
         		$sql = "UPDATE proceso SET numproces='".$_REQUEST['txtnum']."', descrip='".strtolower($_REQUEST['txtdescrip'])."', fecalta='".$_REQUEST['txtfecha']."', sede='".$_REQUEST['selsede']."', presupuesto='".$_REQUEST['txtpresupuesto']."'   WHERE idproces = '".$_REQUEST['idproceso']."'";
+                print_r($sql);die();
         		if($con->query($sql)){
 	                return 1;
 	            }else{
